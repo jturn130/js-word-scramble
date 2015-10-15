@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Word Scramble</title>
+</head>
+<body>
+    <h1>A Javascript Word Scramble Game</h1>
+
+    <script>
+        "use strict";
+
+        var WORDS     = ["elephant", "apple", "hackbright", "mango"];
+
+        var playing = true;
+
+        while (playing) {
+            var indexForWord = Math.floor(Math.random() * 4);
+
+            var wordToGuess = WORDS[indexForWord];
+            var letterList = wordToGuess.split("");
+            var scrambledWord = "";
+            while (letterList.length !== 0) {
+                choose random int in length of letterList
+                var indexForLetter = Math.floor(Math.random() * letterList.length);
+                // append letter at that index to scrambledWord
+                scrambledWord = scrambledWord.concat(letterList[indexForLetter]);
+                // remove that letter from letterList
+                letterList.splice(indexForLetter, indexForLetter);
+                letterList = [];
+            }
+
+
+            alert("Your scrambled word is " + scrambledWord);
+
+            var guess = prompt("Your scrambled word is " + scrambledWord + ".  What is your guess?");
+
+            guess = guess.toLowerCase().trim();
+
+            if (guess !== wordToGuess) {
+                alert("You got the wrong answer, you fool! The right answer is " + wordToGuess + "!");
+            } else {
+                alert("Good guess!  You were right!");
+            }
+
+            playing = confirm("Press OK To keep playing or Cancel to quit");
+        }
+
+        alert("Byeeeee!");
+    </script>
+    
+</body>
+</html>
